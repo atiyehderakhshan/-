@@ -131,79 +131,61 @@
             transform: scale(1.1);
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
         }
-        .course-slider {
-            position: relative;
-            overflow: hidden;
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
             padding: 20px 0;
-        }
-        .course-slider .carousel {
-            display: flex;
-            transition: transform 0.6s ease-in-out;
-            gap: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
         }
         .course-card {
-            flex: 0 0 calc(33.33% - 13.33px);
-            background: linear-gradient(145deg, #ffffff, #f9fafb);
-            border-radius: 12px;
+            background: linear-gradient(145deg, #ffffff, #f3e8ff);
+            border-radius: 10px;
             overflow: hidden;
-            border: 2px solid #1e40af;
+            border: 2px solid #7e22ce;
             transition: all 0.4s ease;
             cursor: pointer;
-            min-height: 300px;
+            min-height: 280px;
+            padding: 15px;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 200px;
         }
         .course-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(126, 34, 206, 0.3);
+            border-color: #a855f7;
         }
         .course-card h3 {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 1.3rem;
+            gap: 6px;
+            font-size: 1.2rem;
+            color: #6b21a8;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
-        .course-slider-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20px;
-            z-index: 20;
+        .course-card i {
+            font-size: 1.4rem;
+            color: #7e22ce;
         }
-        .course-slider-controls button {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s ease;
+        .course-card p {
+            color: #4b5563;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            flex-grow: 1;
         }
-        .course-slider-controls button:hover {
-            background: rgba(255, 255, 255, 0.4);
+        .course-card a {
+            color: #7e22ce;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
         }
-        .course-slider-indicators {
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            display: flex;
-            gap: 10px;
-        }
-        .course-slider-indicators span {
-            width: 12px;
-            height: 12px;
-            background: rgba(30, 64, 175, 0.5);
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .course-slider-indicators .active {
-            background: #1e40af;
+        .course-card a:hover {
+            color: #a855f7;
         }
         .contact-section, .classroom-section {
             background: linear-gradient(90deg, #fef3e2, #e0f2fe);
@@ -238,7 +220,7 @@
             transition: border-color 0.3s ease;
         }
         .contact-form input:focus, .contact-form textarea:focus {
-            border-color: #3b82f6;
+            border-color: #7e22ce;
             outline: none;
         }
         .footer {
@@ -256,6 +238,19 @@
             padding: 0 20px;
             z-index: 20;
         }
+        .carousel-controls button {
+            background: rgba(126, 34, 206, 0.3);
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .carousel-controls button:hover {
+            background: rgba(126, 34, 206, 0.5);
+        }
         .carousel-indicators {
             position: absolute;
             bottom: 20px;
@@ -270,7 +265,6 @@
             height: 12px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
-            display: inline-block;
             cursor: pointer;
             transition: background 0.3s ease;
         }
@@ -297,6 +291,36 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .course-card {
+                width: 180px;
+                min-height: 260px;
+            }
+            .course-card h3 {
+                font-size: 1.1rem;
+            }
+            .course-card p {
+                font-size: 0.8rem;
+            }
+            .course-card a {
+                font-size: 0.85rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .course-card {
+                width: 160px;
+                min-height: 240px;
+            }
+            .course-card h3 {
+                font-size: 1rem;
+            }
+            .course-card p {
+                font-size: 0.75rem;
+            }
+            .course-card a {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -368,81 +392,29 @@
         <a href="#" class="btn-primary">بیشتر بدانید</a>
     </section>
 
-    <!-- بخش دوره‌ها با اسلایدر -->
+    <!-- بخش دوره‌ها با شبکه -->
     <section id="courses" class="container mx-auto px-6 py-16">
         <h2 class="text-4xl font-extrabold text-blue-800 mb-10 text-center">دوره‌های ما</h2>
-        <div class="course-slider">
-            <div class="carousel">
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-calculator"></i> ریاضی</h3>
-                    <p class="text-gray-600 mb-4">آموزش مفاهیم پایه تا پیشرفته ریاضی با تمرکز بر حل مسائل کنکوری و کاربردی، همراه با تمرین‌های عملی.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-flask"></i> فیزیک</h3>
-                    <p class="text-gray-600 mb-4">یادگیری قوانین فیزیک با آزمایش‌های عملی و حل مسائل پیچیده برای موفقیت در آزمون‌های سخت.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-vial"></i> شیمی</h3>
-                    <p class="text-gray-600 mb-4">آموزش شیمی آلی و معدنی با تمرکز بر واکنش‌ها و فرمول‌ها برای درک عمیق مفاهیم علمی.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-leaf"></i> زیست</h3>
-                    <p class="text-gray-600 mb-4">مطالعه سیستم‌های زیستی و ژنتیک با رویکرد کاربردی برای آمادگی در آزمون‌های پزشکی.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-draw-polygon"></i> هندسه</h3>
-                    <p class="text-gray-600 mb-4">آموزش هندسه تحلیلی و اشکال فضایی با حل مسائل پیشرفته برای دانش‌آموزان علاقه‌مند به ریاضیات.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-calculator"></i> حسابان</h3>
-                    <p class="text-gray-600 mb-4">دوره حساب دیفرانسیل و انتگرال با تمرکز بر کاربردهای عملی و حل مسائل کنکوری.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-brain"></i> تیزهوشان</h3>
-                    <p class="text-gray-600 mb-4">دوره‌های آمادگی آزمون تیزهوشان با تمرکز بر مهارت‌های حل مسئله و تفکر انتقادی.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-book"></i> ادبیات فارسی</h3>
-                    <p class="text-gray-600 mb-4">یادگیری نگارش، شعر و ادبیات کلاسیک برای تقویت مهارت‌های زبانی و موفقیت در کنکور.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-language"></i> زبان انگلیسی</h3>
-                    <p class="text-gray-600 mb-4">آموزش گرامر، مکالمه و مهارت‌های تست‌زنی برای آمادگی در آزمون‌های بین‌المللی و کنکور.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-calculator"></i> ریاضی پایه</h3>
-                    <p class="text-gray-600 mb-4">تقویت پایه‌های ریاضی برای دانش‌آموزان ابتدایی و راهنمایی با روش‌های تعاملی.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-lightbulb"></i> هوش و استعداد</h3>
-                    <p class="text-gray-600 mb-4">توسعه مهارت‌های شناختی و خلاقیت برای آمادگی در آزمون‌های تیزهوشان و المپیاد.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
-                <div class="course-card bg-white shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-graduation-cap"></i> آمادگی کنکور</h3>
-                    <p class="text-gray-600 mb-4">برنامه‌ریزی جامع و تکنیک‌های تست‌زنی برای موفقیت در کنکور سراسری و آزاد.</p>
-                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-                </div>
+        <div class="course-grid">
+            <div class="course-card">
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-3"><i class="fas fa-calculator"></i> ریاضی</h3>
+                <p class="text-gray-600 mb-4">آموزش مفاهیم پایه تا پیشرفته ریاضی با تمرکز بر حل مسائل کنکوری و کاربردی، همراه با تمرین‌های عملی.</p>
+                <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
             </div>
-            <div class="course-slider-controls">
-                <button onclick="showPrevCourse()" class="prev"><i class="fas fa-chevron-right"></i></button>
-                <button onclick="showNextCourse()" class="next"><i class="fas fa-chevron-left"></i></button>
+            <div class="course-card">
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-3"><i class="fas fa-flask"></i> فیزیک</h3>
+                <p class="text-gray-600 mb-4">یادگیری قوانین فیزیک با آزمایش‌های عملی و حل مسائل پیچیده برای موفقیت در آزمون‌های سخت.</p>
+                <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
             </div>
-            <div class="course-slider-indicators">
-                <span class="active" onclick="currentCourse(0)"></span>
-                <span onclick="currentCourse(1)"></span>
-                <span onclick="currentCourse(2)"></span>
-                <span onclick="currentCourse(3)"></span>
+            <div class="course-card">
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-3"><i class="fas fa-vial"></i> شیمی</h3>
+                <p class="text-gray-600 mb-4">آموزش شیمی آلی و معدنی با تمرکز بر واکنش‌ها و فرمول‌ها برای درک عمیق مفاهیم علمی.</p>
+                <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+            </div>
+            <div class="course-card">
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-3"><i class="fas fa-leaf"></i> زیست</h3>
+                <p class="text-gray-600 mb-4">مطالعه سیستم‌های زیستی و ژنتیک با رویکرد کاربردی برای آمادگی در آزمون‌های پزشکی.</p>
+                <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
             </div>
         </div>
     </section>
@@ -514,6 +486,7 @@
 
     <!-- اسکریپت‌ها -->
     <script>
+        // اسلایدر هیرو
         let currentItem = 0;
         const carouselItems = document.querySelectorAll('.carousel-item');
         const indicators = document.querySelectorAll('.carousel-indicators span');
@@ -541,37 +514,6 @@
         }
 
         setInterval(showNextSlide, 6000);
-
-        // اسلایدر دوره‌ها
-        let currentCourseIndex = 0;
-        const courseItems = document.querySelector('.course-slider .carousel');
-        const courseIndicators = document.querySelectorAll('.course-slider-indicators span');
-
-        function updateCourseSlider() {
-            const totalItems = document.querySelectorAll('.course-card').length;
-            const itemWidth = 33.33; // درصد عرض هر کارت
-            courseItems.style.transform = `translateX(-${currentCourseIndex * itemWidth * 3}%)`; // جابه‌جایی بر اساس 3 کارت
-            courseIndicators.forEach((ind, idx) => ind.classList.toggle('active', idx === currentCourseIndex));
-        }
-
-        function showNextCourse() {
-            const totalItems = document.querySelectorAll('.course-card').length;
-            currentCourseIndex = (currentCourseIndex + 1) % Math.ceil(totalItems / 3);
-            updateCourseSlider();
-        }
-
-        function showPrevCourse() {
-            const totalItems = document.querySelectorAll('.course-card').length;
-            currentCourseIndex = (currentCourseIndex - 1 + Math.ceil(totalItems / 3)) % Math.ceil(totalItems / 3);
-            updateCourseSlider();
-        }
-
-        function currentCourse(index) {
-            currentCourseIndex = index;
-            updateCourseSlider();
-        }
-
-        setInterval(showNextCourse, 5000);
     </script>
 </body>
 </html>
