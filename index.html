@@ -131,61 +131,62 @@
             transform: scale(1.1);
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
         }
-        .course-grid {
+        .resource-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             padding: 20px 0;
-            overflow-x: auto;
-            white-space: nowrap;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .course-card {
+        .resource-card {
             background: linear-gradient(145deg, #ffffff, #f3e8ff);
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             border: 2px solid #7e22ce;
             transition: all 0.4s ease;
             cursor: pointer;
             min-height: 300px;
             padding: 15px;
-            display: inline-flex;
+            display: flex;
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 200px;
         }
-        .course-card:hover {
-            transform: translateY(-8px) scale(1.03);
+        .resource-card:hover {
+            transform: translateY(-10px) scale(1.02);
             box-shadow: 0 12px 25px rgba(126, 34, 206, 0.3);
             border-color: #a855f7;
         }
-        .course-card h3 {
+        .resource-card h3 {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 1.2rem;
+            gap: 8px;
+            font-size: 1.3rem;
             color: #6b21a8;
             font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .course-card i {
-            font-size: 1.4rem;
-            color: #7e22ce;
-        }
-        .course-card p {
-            color: #4b5563;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            flex-grow: 1;
             margin-bottom: 12px;
         }
-        .course-card a {
+        .resource-card i {
+            font-size: 1.5rem;
+            color: #7e22ce;
+        }
+        .resource-card p {
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .resource-card a {
             color: #7e22ce;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
+            text-decoration: underline;
         }
-        .course-card a:hover {
+        .resource-card a:hover {
             color: #a855f7;
         }
         .contact-section, .classroom-section {
@@ -294,33 +295,37 @@
             to { opacity: 1; }
         }
         @media (max-width: 768px) {
-            .course-card {
-                width: 180px;
+            .resource-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .resource-card {
                 min-height: 280px;
             }
-            .course-card h3 {
-                font-size: 1.1rem;
+            .resource-card h3 {
+                font-size: 1.2rem;
             }
-            .course-card p {
-                font-size: 0.85rem;
+            .resource-card p {
+                font-size: 0.9rem;
             }
-            .course-card a {
-                font-size: 0.85rem;
+            .resource-card a {
+                font-size: 0.9rem;
             }
         }
         @media (max-width: 480px) {
-            .course-card {
-                width: 160px;
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            .resource-card {
                 min-height: 260px;
             }
-            .course-card h3 {
-                font-size: 1rem;
+            .resource-card h3 {
+                font-size: 1.1rem;
             }
-            .course-card p {
-                font-size: 0.8rem;
+            .resource-card p {
+                font-size: 0.85rem;
             }
-            .course-card a {
-                font-size: 0.8rem;
+            .resource-card a {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -380,7 +385,7 @@
         <div class="hero-content">
             <h1>آینده‌ات را درخشان کن!</h1>
             <p>با بهترین آموزش‌ها، موفقیت در انتظار توست</p>
-            <a href="#courses" class="btn-primary mt-6 inline-block">شروع یادگیری</a>
+            <a href="#resources" class="btn-primary mt-6 inline-block">شروع یادگیری</a>
         </div>
     </section>
 
@@ -393,29 +398,24 @@
         <a href="#" class="btn-primary">بیشتر بدانید</a>
     </section>
 
-    <!-- بخش دوره‌ها با شبکه -->
-    <section id="courses" class="container mx-auto px-6 py-16">
-        <h2 class="text-4xl font-extrabold text-blue-800 mb-10 text-center">دوره‌های ما</h2>
-        <div class="course-grid">
-            <div class="course-card">
-                <h3 class="text-xl font-bold mb-3 flex items-center gap-3"><i class="fas fa-calculator"></i> ریاضی</h3>
-                <p class="text-gray-600 mb-4">آموزش مفاهیم پایه تا پیشرفته ریاضی با تمرکز بر حل مسائل کنکوری و کاربردی، همراه با تمرین‌های عملی.</p>
-                <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+    <!-- بخش منابع آموزشی و ابزارها -->
+    <section id="resources" class="container mx-auto px-6 py-16">
+        <h2 class="text-4xl font-extrabold text-blue-800 mb-10 text-center">منابع آموزشی و ابزارها</h2>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3><i class="fas fa-video"></i> ویدئوهای آموزشی</h3>
+                <p>دسترسی به مجموعه‌ای از ویدئوهای آموزشی باکیفیت برای دروس ریاضی، فیزیک، شیمی و زیست. این ویدئوها توسط اساتید مجرب تهیه شده‌اند و به شما کمک می‌کنند مفاهیم پیچیده را به‌راحتی درک کنید.</p>
+                <a href="https://www.youtube.com/playlist?list=PLexample" target="_blank">مشاهده ویدئوها</a>
             </div>
-            <div class="course-card">
-                <h3 class="text-xl font-bold mb-3 flex items-center gap-3"><i class="fas fa-flask"></i> فیزیک</h3>
-                <p class="text-gray-600 mb-4">یادگیری قوانین فیزیک با آزمایش‌های عملی و حل مسائل پیچیده برای موفقیت در آزمون‌های سخت.</p>
-                <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+            <div class="resource-card">
+                <h3><i class="fas fa-book"></i> کتابخانه آنلاین</h3>
+                <p>کتاب‌ها و جزوات PDF رایگان برای مطالعه دروس مختلف. از کتاب‌های مرجع تا نکات کنکوری، همه در یک مکان برای پیشرفت شما.</p>
+                <a href="https://example.com/library" target="_blank">دانلود کتاب‌ها</a>
             </div>
-            <div class="course-card">
-                <h3 class="text-xl font-bold mb-3 flex items-center gap-3"><i class="fas fa-vial"></i> شیمی</h3>
-                <p class="text-gray-600 mb-4">آموزش شیمی آلی و معدنی با تمرکز بر واکنش‌ها و فرمول‌ها برای درک عمیق مفاهیم علمی.</p>
-                <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
-            </div>
-            <div class="course-card">
-                <h3 class="text-xl font-bold mb-3 flex items-center gap-3"><i class="fas fa-leaf"></i> زیست</h3>
-                <p class="text-gray-600 mb-4">مطالعه سیستم‌های زیستی و ژنتیک با رویکرد کاربردی برای آمادگی در آزمون‌های پزشکی.</p>
-                <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+            <div class="resource-card">
+                <h3><i class="fas fa-tools"></i> ابزارهای تعاملی</h3>
+                <p>آزمون‌های آنلاین، کوییزهای تعاملی و نرم‌افزارهای آموزشی برای تمرین و ارزیابی پیشرفت تحصیلی شما.</p>
+                <a href="https://example.com/quiz" target="_blank">شروع آزمون</a>
             </div>
         </div>
     </section>
@@ -438,7 +438,7 @@
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl font-extrabold text-blue-800 mb-8">ثبت‌نام دوره‌های جدید آغاز شد!</h2>
             <video height="160" controls>
-                <source src="https://static.cdn.asset.aparat.com/avt/66409867_15s.mp4" typeWjE="video/mp4">
+                <source src="https://static.cdn.asset.aparat.com/avt/66409867_15s.mp4" type="video/mp4">
                 مرورگرت از ویدئو پشتیبانی نمی‌کنه. لطفاً از یوتیوب استفاده کن: <a href="https://www.youtube.com/embed/SAMPLE_ID">لینک یوتیوب</a>
             </video>
             <p class="mt-6 text-gray-600 max-w-2xl mx-auto">لورم ایپسوم متن ساختگی با تولید سادگی و خوانایی، طراحی بخش‌های مختلف سایت با رویکرد حرفه‌ای.</p>
