@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره ما - آتیه درخشان</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.fontcdn.ir/Fonts/Vazir/Vazir.woff') format('woff');
+        }
+        body {
+            font-family: 'Vazir', sans-serif;
+            background: linear-gradient(135deg, #fff7ed 0%, #e0f2fe 100%);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #1e40af, #60a5fa);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a, .navbar .dropdown-toggle {
+            transition: all 0.3s ease;
+            color: #fff;
+            font-weight: 500;
+        }
+        .navbar a:hover, .navbar .dropdown-toggle:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #60a5fa;
+            min-width: 180px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            right: 0;
+            animation: fadeIn 0.3s ease-in;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu a {
+            color: #fff;
+            padding: 12px 16px;
+            transition: background 0.3s ease;
+        }
+        .dropdown-menu a:hover {
+            background: #3b82f6;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+        .content-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(30, 64, 175, 0.2);
+        }
+        .footer {
+            background: linear-gradient(90deg, #1e40af, #60a5fa);
+            padding: 2rem 0;
+            color: #fff;
+            margin-top: 2rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .content-card {
+                padding: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .content-card {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر و منوی ناوبری -->
+    <nav class="navbar shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-white text-3xl font-extrabold">آتیه درخشان</a>
+            <div class="space-x-6 space-x-reverse flex items-center">
+                <a href="index.html" class="text-white hover:text-yellow-200 transition duration-300 text-lg">خانه</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer">درباره ما</span>
+                    <div class="dropdown-menu">
+                        <a href="about-us.html">معرفی آموزشگاه</a>
+                        <a href="history.html">تاریخچه</a>
+                        <a href="mission.html">مأموریت و چشم‌انداز</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer">دوره‌ها</span>
+                    <div class="dropdown-menu">
+                        <a href="math-course.html">ریاضی پیشرفته</a>
+                        <a href="science-course.html">علوم تجربی</a>
+                        <a href="english-course.html">زبان انگلیسی</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer">مدرسان</span>
+                    <div class="dropdown-menu">
+                        <a href="teachers-list.html">لیست اساتید</a>
+                        <a href="teacher-profiles.html">پروفایل‌ها</a>
+                    </div>
+                </div>
+                <a href="#contact" class="text-white hover:text-yellow-200 transition duration-300 text-lg">تماس با ما</a>
+                <a href="#blog" class="text-white hover:text-yellow-200 transition duration-300 text-lg">وبلاگ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- بخش معرفی آموزشگاه -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">معرفی آموزشگاه آتیه درخشان</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="content-card">
+                    <p class="text-gray-700 leading-relaxed">
+                        آموزشگاه آتیه درخشان با هدف ارتقاء سطح علمی دانش‌آموزان و آماده‌سازی آن‌ها برای موفقیت در آزمون‌های رقابتی تأسیس شده است. ما با تیمی متعهد از اساتید مجرب و استفاده از روش‌های نوین آموزشی، محیطی پویا و انگیزه‌بخش برای یادگیری فراهم کرده‌ایم. مأموریت ما، تربیت نسل آینده‌ای است که با دانش و اعتمادبه‌نفس به اهدافشان دست یابند.
+                    </p>
+                </div>
+                <div class="content-card">
+                    <p class="text-gray-700 leading-relaxed">
+                        این آموزشگاه با امکانات مدرن، کلاس‌های مجهز و برنامه‌ریزی دقیق، به دانش‌آموزان کمک می‌کند تا دروس خود را عمیق‌تر درک کرده و مهارت‌های لازم برای آینده را کسب کنند. ما به کیفیت آموزش و رضایت شما اهمیت می‌دهیم و همیشه آماده‌ایم تا بهترین خدمات را ارائه دهیم.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش تاریخچه -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">تاریخچه ما</h2>
+            <div class="content-card">
+                <p class="text-gray-700 leading-relaxed">
+                    آموزشگاه آتیه درخشان در سال 1395 با تلاش گروهی از معلمان و مربیان با تجربه در شهر سهند تأسیس شد. از همان ابتدا، هدف ما ارائه آموزش‌هایی فراتر از کتاب‌های درسی بود. با گذشت سال‌ها، این آموزشگاه به یکی از مراکز برجسته آموزشی منطقه تبدیل شده و هزاران دانش‌آموز را برای موفقیت در کنکور و تحصیلات عالی آماده کرده است.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش مأموریت و چشم‌انداز -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">مأموریت و چشم‌انداز</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="content-card">
+                    <h3 class="text-xl text-blue-800 font-bold mb-4">مأموریت</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        مأموریت ما ایجاد بستری آموزشی است که دانش‌آموزان را به سوی خودباوری و موفقیت هدایت کند. با تمرکز بر آموزش‌های کاربردی و تعاملی، هدفمان پرورش افرادی خلاق و توانمند است.
+                    </p>
+                </div>
+                <div class="content-card">
+                    <h3 class="text-xl text-blue-800 font-bold mb-4">چشم‌انداز</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        چشم‌انداز ما تبدیل شدن به یکی از برترین آموزشگاه‌های کشور است که با نوآوری و کیفیت، الگویی برای آموزش‌های آینده‌ساز باشد.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer class="footer text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg mb-4">آتیه درخشان، مسیر موفقیت تو</p>
+            <p class="text-md mb-2">سهند، فاز دو، نبش میدان معلم، مجتمع تجاری جواهر، طبقه دوم</p>
+            <p class="text-md mb-4">تلفن: 09144277240 - 09394713666</p>
+            <div class="flex justify-center gap-6">
+                <a href="index.html" class="text-white hover:text-yellow-200 transition duration-300">خانه</a>
+                <a href="about-us.html" class="text-white hover:text-yellow-200 transition duration-300">درباره ما</a>
+                <a href="#contact" class="text-white hover:text-yellow-200 transition duration-300">تماس</a>
+            </div>
+            <p class="mt-6 text-sm">© 1404 آموزشگاه آتیه درخشان - تمامی حقوق محفوظ است</p>
+        </div>
+    </footer>
+</body>
+</html>
