@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزشگاه علمی آتیه درخشان</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.fontcdn.ir/Fonts/Vazir/Vazir.woff') format('woff');
+        }
+        body {
+            font-family: 'Vazir', sans-serif;
+            background: linear-gradient(135deg, #fff7ed 0%, #e0f2fe 100%);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #1e40af, #60a5fa);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a, .navbar .dropdown-toggle {
+            transition: all 0.3s ease;
+            color: #fff;
+            font-weight: 500;
+        }
+        .navbar a:hover, .navbar .dropdown-toggle:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #60a5fa;
+            min-width: 180px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            right: 0;
+            animation: fadeIn 0.3s ease-in;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu a {
+            color: #fff;
+            padding: 12px 16px;
+            transition: background 0.3s ease;
+        }
+        .dropdown-menu a:hover {
+            background: #3b82f6;
+        }
+        .hero-section {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(85%);
+        }
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.7), rgba(96, 165, 250, 0.7));
+            z-index: 1;
+            animation: gradientShift 6s infinite alternate;
+        }
+        .carousel-item.active {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff9c4;
+            z-index: 10;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            animation: bounceIn 1s ease-out, glow 2.5s infinite alternate;
+            background: linear-gradient(90deg, #ffeb3b, #ffd700, #ffcc00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-content p {
+            font-size: 1.8rem;
+            margin: 1rem 0;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #3b82f6, #1e40af);
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: 2px solid #fff;
+            transition: all 0.4s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+        .course-slider {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        .course-slider .carousel {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+            gap: 20px;
+        }
+        .course-card {
+            flex: 0 0 calc(33.33% - 13.33px);
+            background: linear-gradient(145deg, #ffffff, #f9fafb);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #1e40af;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            min-height: 300px;
+        }
+        .course-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+        .course-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.3rem;
+        }
+        .course-slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 20;
+        }
+        .course-slider-controls button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .course-slider-controls button:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .course-slider-indicators {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            gap: 10px;
+        }
+        .course-slider-indicators span {
+            width: 12px;
+            height: 12px;
+            background: rgba(30, 64, 175, 0.5);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .course-slider-indicators .active {
+            background: #1e40af;
+        }
+        .contact-section, .classroom-section {
+            background: linear-gradient(90deg, #fef3e2, #e0f2fe);
+            padding: 50px 0;
+        }
+        .video-section {
+            padding: 50px 0;
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            text-align: center;
+        }
+        .video-section video {
+            max-width: 70%;
+            margin: 0 auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #3b82f6;
+            outline: none;
+        }
+        .footer {
+            background: linear-gradient(90deg, #1e40af, #60a5fa);
+            padding: 2rem 0;
+            color: #fff;
+        }
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 20;
+        }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            gap: 10px;
+        }
+        .carousel-indicators span {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .carousel-indicators .active {
+            background: #ffd700;
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            60% { opacity: 1; transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 25px rgba(255, 255, 255, 0.6); }
+            to { text-shadow: 0 0 25px rgba(255, 215, 0, 1), 0 0 35px rgba(255, 255, 255, 0.8); }
+        }
+        @keyframes gradientShift {
+            from { background: linear-gradient(135deg, rgba(30, 64, 175, 0.7), rgba(96, 165, 250, 0.7)); }
+            to { background: linear-gradient(135deg, rgba(96, 165, 250, 0.7), rgba(30, 64, 175, 0.7)); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر و منوی ناوبری -->
+    <nav class="navbar shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-white text-3xl font-extrabold">آتیه درخشان</a>
+            <div class="space-x-6 space-x-reverse flex items-center">
+                <a href="index.html" class="text-white hover:text-yellow-200 transition duration-300 text-lg">خانه</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer">درباره ما</span>
+                    <div class="dropdown-menu">
+                        <a href="about-us.html">معرفی آموزشگاه</a>
+                        <a href="history.html">تاریخچه</a>
+                        <a href="mission.html">مأموریت و چشم‌انداز</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer">دوره‌ها</span>
+                    <div class="dropdown-menu">
+                        <a href="math-course.html">ریاضی پیشرفته</a>
+                        <a href="science-course.html">علوم تجربی</a>
+                        <a href="english-course.html">زبان انگلیسی</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer">مدرسان</span>
+                    <div class="dropdown-menu">
+                        <a href="teachers-list.html">لیست اساتید</a>
+                        <a href="teacher-profiles.html">پروفایل‌ها</a>
+                    </div>
+                </div>
+                <a href="#contact" class="text-white hover:text-yellow-200 transition duration-300 text-lg">تماس با ما</a>
+                <a href="#blog" class="text-white hover:text-yellow-200 transition duration-300 text-lg">وبلاگ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- بخش هیرو با اسلایدر -->
+    <section class="hero-section">
+        <div class="carousel">
+            <div class="carousel-item active" style="background-image: url('https://raw.githubusercontent.com/roghayeh-asn/atiye-derakhshan/main/photo_%DB%B2%DB%B0%DB%B2%DB%B5-%DB%B0%DB%B9-%DB%B1%DB%B1_%DB%B2%DB%B1-%DB%B3%DB%B6-%DB%B4%DB%B8.jpg');"></div>
+            <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1200x500?text=کتاب‌های+آموزشی')"></div>
+            <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1200x500?text=کلاس‌های+آتیه+درخشان')"></div>
+            <div class="carousel-controls">
+                <button onclick="showPrevSlide()" class="prev"><i class="fas fa-chevron-right"></i></button>
+                <button onclick="showNextSlide()" class="next"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="carousel-indicators">
+                <span class="active" onclick="currentSlide(0)"></span>
+                <span onclick="currentSlide(1)"></span>
+                <span onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1>آینده‌ات را درخشان کن!</h1>
+            <p>با بهترین آموزش‌ها، موفقیت در انتظار توست</p>
+            <a href="#courses" class="btn-primary mt-6 inline-block">شروع یادگیری</a>
+        </div>
+    </section>
+
+    <!-- بخش درباره ما -->
+    <section id="about" class="container mx-auto px-6 py-16 text-center">
+        <h2 class="text-4xl font-extrabold text-blue-800 mb-8">درباره ما</h2>
+        <p class="text-lg text-gray-700 mb-6 max-w-3xl mx-auto leading-relaxed">
+            آموزشگاه آتیه درخشان با هدف ارتقاء سطح علمی دانش‌آموزان و ارائه آموزش‌های باکیفیت تأسیس شده است. ما با تیمی حرفه‌ای، روش‌های نوین تدریس و امکانات پیشرفته، بهترین تجربه یادگیری را به شما ارائه می‌دهیم.
+        </p>
+        <a href="#" class="btn-primary">بیشتر بدانید</a>
+    </section>
+
+    <!-- بخش دوره‌ها با اسلایدر -->
+    <section id="courses" class="container mx-auto px-6 py-16">
+        <h2 class="text-4xl font-extrabold text-blue-800 mb-10 text-center">دوره‌های ما</h2>
+        <div class="course-slider">
+            <div class="carousel">
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-calculator"></i> ریاضی</h3>
+                    <p class="text-gray-600 mb-4">آموزش مفاهیم پایه تا پیشرفته ریاضی با تمرکز بر حل مسائل کنکوری و کاربردی، همراه با تمرین‌های عملی.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-flask"></i> فیزیک</h3>
+                    <p class="text-gray-600 mb-4">یادگیری قوانین فیزیک با آزمایش‌های عملی و حل مسائل پیچیده برای موفقیت در آزمون‌های سخت.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-vial"></i> شیمی</h3>
+                    <p class="text-gray-600 mb-4">آموزش شیمی آلی و معدنی با تمرکز بر واکنش‌ها و فرمول‌ها برای درک عمیق مفاهیم علمی.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-leaf"></i> زیست</h3>
+                    <p class="text-gray-600 mb-4">مطالعه سیستم‌های زیستی و ژنتیک با رویکرد کاربردی برای آمادگی در آزمون‌های پزشکی.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-draw-polygon"></i> هندسه</h3>
+                    <p class="text-gray-600 mb-4">آموزش هندسه تحلیلی و اشکال فضایی با حل مسائل پیشرفته برای دانش‌آموزان علاقه‌مند به ریاضیات.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-calculator"></i> حسابان</h3>
+                    <p class="text-gray-600 mb-4">دوره حساب دیفرانسیل و انتگرال با تمرکز بر کاربردهای عملی و حل مسائل کنکوری.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-brain"></i> تیزهوشان</h3>
+                    <p class="text-gray-600 mb-4">دوره‌های آمادگی آزمون تیزهوشان با تمرکز بر مهارت‌های حل مسئله و تفکر انتقادی.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-book"></i> ادبیات فارسی</h3>
+                    <p class="text-gray-600 mb-4">یادگیری نگارش، شعر و ادبیات کلاسیک برای تقویت مهارت‌های زبانی و موفقیت در کنکور.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-language"></i> زبان انگلیسی</h3>
+                    <p class="text-gray-600 mb-4">آموزش گرامر، مکالمه و مهارت‌های تست‌زنی برای آمادگی در آزمون‌های بین‌المللی و کنکور.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-calculator"></i> ریاضی پایه</h3>
+                    <p class="text-gray-600 mb-4">تقویت پایه‌های ریاضی برای دانش‌آموزان ابتدایی و راهنمایی با روش‌های تعاملی.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-lightbulb"></i> هوش و استعداد</h3>
+                    <p class="text-gray-600 mb-4">توسعه مهارت‌های شناختی و خلاقیت برای آمادگی در آزمون‌های تیزهوشان و المپیاد.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+                <div class="course-card bg-white shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center gap-3"><i class="fas fa-graduation-cap"></i> آمادگی کنکور</h3>
+                    <p class="text-gray-600 mb-4">برنامه‌ریزی جامع و تکنیک‌های تست‌زنی برای موفقیت در کنکور سراسری و آزاد.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-800 font-semibold transition duration-300">جزئیات بیشتر</a>
+                </div>
+            </div>
+            <div class="course-slider-controls">
+                <button onclick="showPrevCourse()" class="prev"><i class="fas fa-chevron-right"></i></button>
+                <button onclick="showNextCourse()" class="next"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="course-slider-indicators">
+                <span class="active" onclick="currentCourse(0)"></span>
+                <span onclick="currentCourse(1)"></span>
+                <span onclick="currentCourse(2)"></span>
+                <span onclick="currentCourse(3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش مدرسان -->
+    <section id="teachers" class="classroom-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-blue-800 mb-10"><i class="fas fa-chalkboard-teacher"></i> مدرسان ما</h2>
+            <div class="classroom-card bg-white shadow-lg p-8 mx-auto max-w-3xl">
+                <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                    تیم ما شامل اساتید مجرب و با انگیزه است که با سال‌ها تجربه و روش‌های نوین، دانش‌آموزان را به سوی موفقیت هدایت می‌کنند.
+                </p>
+                <a href="#" class="btn-primary">معرفی اساتید</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش ویدئو -->
+    <section class="video-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-blue-800 mb-8">ثبت‌نام دوره‌های جدید آغاز شد!</h2>
+            <video height="160" controls>
+                <source src="https://persian21.cdn.asset.aparat.com/aparat-video/ab75685d2a375a34a68f4fac0aa13d5666409867-360p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjJhNjA5M2I0YWMxYjFmNzg0MGVhMzk4NGE1OThiZTgzIiwiZXhwIjoxNzU5MTg1ODQ0LCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.agL2cGOT5oa95100p-5uCD01NECx1eQIaiWQmrKGWjE" type="video/mp4">
+                مرورگرت از ویدئو پشتیبانی نمی‌کنه. لطفاً از یوتیوب استفاده کن: <a href="https://www.youtube.com/embed/SAMPLE_ID">لینک یوتیوب</a>
+            </video>
+            <p class="mt-6 text-gray-600 max-w-2xl mx-auto">لورم ایپسوم متن ساختگی با تولید سادگی و خوانایی، طراحی بخش‌های مختلف سایت با رویکرد حرفه‌ای.</p>
+        </div>
+    </section>
+
+    <!-- بخش تماس -->
+    <section id="contact" class="contact-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-blue-800 mb-8"><i class="fas fa-phone-alt"></i> تماس با ما</h2>
+            <div class="contact-form">
+                <input type="text" placeholder="نام و نام خانوادگی" required>
+                <input type="email" placeholder="ایمیل" required>
+                <input type="tel" placeholder="شماره تلفن" required>
+                <textarea placeholder="پیام شما" rows="4" required></textarea>
+                <button class="btn-primary w-full mt-4">ارسال پیام</button>
+            </div>
+            <p class="text-lg text-gray-700 mt-6"><strong>آدرس:</strong> سهند، فاز دو، نبش میدان معلم، مجتمع تجاری جواهر، طبقه دوم</p>
+            <p class="text-lg text-gray-700"><strong>تلفن:</strong> 09144277240 - 09394713666</p>
+        </div>
+    </section>
+
+    <!-- بخش وبلاگ -->
+    <section id="blog" class="container mx-auto px-6 py-16 text-center">
+        <h2 class="text-4xl font-extrabold text-blue-800 mb-8">وبلاگ</h2>
+        <p class="text-lg text-gray-700 mb-6 max-w-3xl mx-auto leading-relaxed">
+            مقالات آموزشی و نکات موفقیت برای دانش‌آموزان در مسیر پیشرفت تحصیلی.
+        </p>
+        <a href="#" class="btn-primary">مشاهده مقالات</a>
+    </section>
+
+    <!-- فوتر -->
+    <footer class="footer text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg mb-4">آتیه درخشان، مسیر موفقیت تو</p>
+            <p class="text-md mb-2">سهند، فاز دو، نبش میدان معلم، مجتمع تجاری جواهر، طبقه دوم</p>
+            <p class="text-md mb-4">تلفن: 09144277240 - 09394713666</p>
+            <div class="flex justify-center gap-6">
+                <a href="#contact" class="text-white hover:text-yellow-200 transition duration-300">تماس</a>
+                <a href="#blog" class="text-white hover:text-yellow-200 transition duration-300">وبلاگ</a>
+                <a href="#" class="text-white hover:text-yellow-200 transition duration-300">شبکه‌های اجتماعی</a>
+            </div>
+            <p class="mt-6 text-sm">© 1404 آموزشگاه آتیه درخشان - تمامی حقوق محفوظ است</p>
+        </div>
+    </footer>
+
+    <!-- اسکریپت‌ها -->
+    <script>
+        let currentItem = 0;
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const indicators = document.querySelectorAll('.carousel-indicators span');
+
+        function showSlide(index) {
+            carouselItems.forEach(item => item.classList.remove('active'));
+            indicators.forEach(ind => ind.classList.remove('active'));
+            carouselItems[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+
+        function showNextSlide() {
+            currentItem = (currentItem + 1) % carouselItems.length;
+            showSlide(currentItem);
+        }
+
+        function showPrevSlide() {
+            currentItem = (currentItem - 1 + carouselItems.length) % carouselItems.length;
+            showSlide(currentItem);
+        }
+
+        function currentSlide(index) {
+            currentItem = index;
+            showSlide(currentItem);
+        }
+
+        setInterval(showNextSlide, 6000);
+
+        // اسلایدر دوره‌ها
+        let currentCourseIndex = 0;
+        const courseItems = document.querySelector('.course-slider .carousel');
+        const courseIndicators = document.querySelectorAll('.course-slider-indicators span');
+
+        function updateCourseSlider() {
+            const totalItems = document.querySelectorAll('.course-card').length;
+            const itemWidth = 33.33; // درصد عرض هر کارت
+            courseItems.style.transform = `translateX(-${currentCourseIndex * itemWidth * 3}%)`; // جابه‌جایی بر اساس 3 کارت
+            courseIndicators.forEach((ind, idx) => ind.classList.toggle('active', idx === currentCourseIndex));
+        }
+
+        function showNextCourse() {
+            const totalItems = document.querySelectorAll('.course-card').length;
+            currentCourseIndex = (currentCourseIndex + 1) % Math.ceil(totalItems / 3);
+            updateCourseSlider();
+        }
+
+        function showPrevCourse() {
+            const totalItems = document.querySelectorAll('.course-card').length;
+            currentCourseIndex = (currentCourseIndex - 1 + Math.ceil(totalItems / 3)) % Math.ceil(totalItems / 3);
+            updateCourseSlider();
+        }
+
+        function currentCourse(index) {
+            currentCourseIndex = index;
+            updateCourseSlider();
+        }
+
+        setInterval(showNextCourse, 5000);
+    </script>
+</body>
+</html>
