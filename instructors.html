@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدرسان آموزشگاه کنکور</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://v1.fontapi.ir/css/Vazir');
+        body { font-family: 'Vazir', sans-serif; }
+        .instructor-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .instructor-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+        .header-bg { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+        .footer-bg { background: linear-gradient(135deg, #1f2937, #4b5563); }
+        .btn-primary { transition: background-color 0.3s ease; }
+        .btn-primary:hover { background-color: #2563eb; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="header-bg text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-3 animate-fade-in">مدرسان برجسته آموزشگاه کنکور</h1>
+            <p class="text-lg md:text-xl">با برترین اساتید کنکور به سوی موفقیت گام بردارید</p>
+        </div>
+    </header>
+
+    <!-- Instructors Section -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Instructor Card 1: حامد درخشانی -->
+            <div class="instructor-card bg-white rounded-xl shadow-md p-6 text-center">
+                <h2 class="text-xl font-semibold text-gray-800">حامد درخشانی</h2>
+                <p class="text-gray-600 mt-2 flex items-center justify-center">
+                    <i class="fas fa-flask mr-2 text-blue-600"></i>مدرس فیزیک و شیمی
+                </p>
+                <p class="text-gray-500 mt-2">متخصص آموزش کنکوری با بیش از ۸ سال تجربه</p>
+            </div>
+
+            <!-- Instructor Card 2 -->
+            <div class="instructor-card bg-white rounded-xl shadow-md p-6 text-center">
+                <h2 class="text-xl font-semibold text-gray-800">محمود درخشانی</h2>
+                <p class="text-gray-600 mt-2 flex items-center justify-center">
+                    <i class="fas fa-calculator mr-2 text-blue-600"></i>مدرس ریاضی، هندسه و حسابان
+                </p>
+                <p class="text-gray-500 mt-2">طراح سوالات کنکور و آزمون‌های آزمایشی</p>
+            </div>
+
+            <!-- Instructor Card 3 -->
+            <div class="instructor-card bg-white rounded-xl shadow-md p-6 text-center">
+                <h2 class="text-xl font-semibold text-gray-800">رقیه اصلانی</h2>
+                <p class="text-gray-600 mt-2 flex items-center justify-center">
+                    <i class="fas fa-leaf mr-2 text-blue-600"></i>مدرس زیست‌شناسی
+                </p>
+                <p class="text-gray-500 mt-2">کارشناس ارشد زیست‌شناسی با تمرکز بر کنکور</p>
+            </div>
+
+            <!-- Instructor Card 4 -->
+            <div class="instructor-card bg-white rounded-xl shadow-md p-6 text-center">
+                <h2 class="text-xl font-semibold text-gray-800">سودابه درخشانی</h2>
+                <p class="text-gray-600 mt-2 flex items-center justify-center">
+                    <i class="fas fa-star mr-2 text-blue-600"></i>مدرس تیزهوشان
+                </p>
+                <p class="text-gray-500 mt-2">متخصص آمادگی آزمون‌های ورودی تیزهوشان</p>
+            </div>
+
+            <!-- Instructor Card 5 -->
+            <div class="instructor-card bg-white rounded-xl shadow-md p-6 text-center">
+                <h2 class="text-xl font-semibold text-gray-800">مهدیه فرهمند</h2>
+                <p class="text-gray-600 mt-2 flex items-center justify-center">
+                    <i class="fas fa-globe mr-2 text-blue-600"></i>مدرس زبان انگلیسی
+                </p>
+                <p class="text-gray-500 mt-2">مدرس حرفه‌ای زبان با روش‌های نوین</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-12 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">آماده فتح کنکور هستید؟</h2>
+            <p class="text-lg mb-6">با بهترین اساتید ما به رتبه‌های برتر دست پیدا کنید!</p>
+            <a href="#" class="inline-block bg-white text-blue-600 py-3 px-8 rounded-lg font-semibold hover:bg-gray-200 transition duration-300">ثبت‌نام در دوره‌های کنکور</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-bg text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">تمامی حقوق برای آموزشگاه کنکور محفوظ است. &copy; ۱۴۰۴</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="text-white hover:text-blue-300"><i class="fab fa-telegram-plane text-xl"></i></a>
+                <a href="#" class="text-white hover:text-blue-300"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-white hover:text-blue-300"><i class="fab fa-whatsapp text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
