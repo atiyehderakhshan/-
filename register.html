@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت‌نام در دوره‌ها - آتیه درخشان</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.fontcdn.ir/Fonts/Vazir/Vazir.woff') format('woff');
+        }
+        body {
+            font-family: 'Vazir', sans-serif;
+            background: linear-gradient(135deg, #fff7ed 0%, #e0f2fe 100%);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #1e40af, #60a5fa);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a, .navbar .dropdown-toggle {
+            transition: all 0.3s ease;
+            color: #fff;
+            font-weight: 500;
+        }
+        .navbar a:hover, .navbar .dropdown-toggle:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #60a5fa;
+            min-width: 180px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            right: 0;
+            animation: fadeIn 0.3s ease-in;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu a {
+            color: #fff;
+            padding: 12px 16px;
+            transition: background 0.3s ease;
+        }
+        .dropdown-menu a:hover {
+            background: #3b82f6;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+        .register-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .register-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(30, 64, 175, 0.2);
+        }
+        .register-form input, .register-form select, .register-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+        .register-form input:focus, .register-form select:focus, .register-form textarea:focus {
+            border-color: #7e22ce;
+            outline: none;
+        }
+        .btn-submit {
+            background: linear-gradient(90deg, #3b82f6, #1e40af);
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: 2px solid #fff;
+            transition: all 0.4s ease;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-submit:hover {
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        .footer {
+            background: linear-gradient(90deg, #1e40af, #60a5fa);
+            padding: 2rem 0;
+            color: #fff;
+            margin-top: 2rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .register-form {
+                padding: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .register-form {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر و منوی ناوبری -->
+    <nav class="navbar shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-white text-3xl font-extrabold">آموزشگاه علمی آتیه درخشان</a>
+            <div class="space-x-6 space-x-reverse flex items-center">
+                <a href="index.html" class="text-white hover:text-yellow-200 transition duration-300 text-lg">خانه</a>
+                <a href="about-us.html" class="text-white hover:text-yellow-200 transition duration-300 text-lg">درباره ما</a>
+                <div class="dropdown">
+                    <a href="courses.html" class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer" aria-label="مشاهده فیلم‌های آموزشی">فیلم‌های آموزشی</a>
+                    <div class="dropdown-menu">
+                        <a href="courses.html#math">ریاضی</a>
+                        <a href="courses.html#science">زیست</a>
+                        <a href="courses.html#english">زبان انگلیسی</a>
+                        <a href="courses.html#physics">فیزیک</a>
+                        <a href="courses.html#chemistry">شیمی</a>
+                        <a href="courses.html#tizhooshan">تیزهوشان</a>
+                    </div>
+                </div>
+                <a href="instructors.html" class="text-white hover:text-yellow-200 transition duration-300 text-lg">مدرسان</a>
+                <a href="register.html" class="text-white hover:text-yellow-200 transition duration-300 text-lg">ثبت‌نام</a>
+                <a href="#blog" class="text-white hover:text-yellow-200 transition duration-300 text-lg">وبلاگ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- بخش فرم ثبت‌نام -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">ثبت‌نام در دوره‌های آموزشی</h2>
+            <div class="register-form">
+                <form>
+                    <input type="text" placeholder="نام و نام خانوادگی" required>
+                    <input type="email" placeholder="ایمیل" required>
+                    <input type="tel" placeholder="شماره تلفن" required>
+                    <select required>
+                        <option value="" disabled selected>دوره مورد نظر را انتخاب کنید</option>
+                        <option value="math">ریاضی</option>
+                        <option value="science">زیست</option>
+                        <option value="english">زبان انگلیسی</option>
+                        <option value="physics">فیزیک</option>
+                        <option value="chemistry">شیمی</option>
+                        <option value="tizhooshan">تیزهوشان</option>
+                    </select>
+                    <textarea placeholder="پیام یا توضیحات اضافی (اختیاری)" rows="4"></textarea>
+                    <button type="submit" class="btn-submit mt-4">ارسال درخواست</button>
+                </form>
+                <p class="text-gray-600 mt-4 text-center">پس از ارسال فرم، تیم ما با شما تماس خواهد گرفت.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer class="footer text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg mb-4">آتیه درخشان، مسیر موفقیت تو</p>
+            <p class="text-md mb-2">سهند، فاز دو، نبش میدان معلم، مجتمع تجاری جواهر، طبقه دوم</p>
+            <p class="text-md mb-4">تلفن: 09144277240 - 09394713666</p>
+            <div class="flex justify-center gap-6">
+                <a href="index.html" class="text-white hover:text-yellow-200 transition duration-300">خانه</a>
+                <a href="about-us.html" class="text-white hover:text-yellow-200 transition duration-300">درباره ما</a>
+                <a href="courses.html" class="text-white hover:text-yellow-200 transition duration-300">فیلم‌های آموزشی</a>
+                <a href="instructors.html" class="text-white hover:text-yellow-200 transition duration-300">مدرسان</a>
+                <a href="register.html" class="text-white hover:text-yellow-200 transition duration-300">ثبت‌نام</a>
+                <a href="#blog" class="text-white hover:text-yellow-200 transition duration-300">وبلاگ</a>
+            </div>
+            <p class="mt-6 text-sm">© 1404 آموزشگاه آتیه درخشان - تمامی حقوق محفوظ است</p>
+        </div>
+    </footer>
+
+    <!-- اسکریپت‌ها -->
+    <script>
+        // Mobile-friendly dropdown toggle
+        document.querySelectorAll('.dropdown-toggle').forEach(dropdown => {
+            dropdown.addEventListener('click', (e) => {
+                const dropdownMenu = dropdown.nextElementSibling;
+                const isVisible = dropdownMenu.style.display === 'block';
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+                if (dropdown.tagName !== 'A' || (dropdown.tagName === 'A' && e.target.closest('.dropdown-menu') === null)) {
+                    dropdownMenu.style.display = isVisible ? 'none' : 'block';
+                }
+                e.stopPropagation();
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
