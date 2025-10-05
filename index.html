@@ -18,6 +18,9 @@
             padding: 0;
             overflow-x: hidden;
         }
+        html {
+            scroll-behavior: smooth;
+        }
         .navbar {
             background: linear-gradient(90deg, #1e40af, #60a5fa);
             padding: 1rem 2rem;
@@ -339,18 +342,18 @@
                 <a href="index.html" class="text-white hover:text-yellow-200 transition duration-300 text-lg">خانه</a>
                 <a href="about-us.html" class="text-white hover:text-yellow-200 transition duration-300 text-lg">درباره ما</a>
                 <div class="dropdown">
-                    <span class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer">دوره‌ها</span>
+                    <a href="courses.html" class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer" aria-label="مشاهده دوره‌های آموزشی">دوره‌ها</a>
                     <div class="dropdown-menu">
-                        <a href="courses.html">ریاضی پیشرفته</a>
-                        <a href="courses.html">علوم تجربی</a>
-                        <a href="courses.html">زبان انگلیسی</a>
-                        <a href="courses.html">فیزیک</a>
-                        <a href="courses.html">شیمی</a>
-                        <a href="courses.html">تیزهوشان</a>
+                        <a href="courses.html#math">ریاضی پیشرفته</a>
+                        <a href="courses.html#science">علوم تجربی</a>
+                        <a href="courses.html#english">زبان انگلیسی</a>
+                        <a href="courses.html#physics">فیزیک</a>
+                        <a href="courses.html#chemistry">شیمی</a>
+                        <a href="courses.html#tizhooshan">تیزهوشان</a>
                     </div>
                 </div>
                 <div class="dropdown">
-                    <span class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer">مدرسان</span>
+                    <span class="dropdown-toggle text-white hover:text-yellow-200 transition duration-300 text-lg cursor-pointer" aria-label="مشاهده اطلاعات مدرسان">مدرسان</span>
                     <div class="dropdown-menu">
                         <a href="teachers-list.html">لیست اساتید</a>
                         <a href="teacher-profiles.html">پروفایل‌ها</a>
@@ -513,6 +516,30 @@
         }
 
         setInterval(showNextSlide, 6000);
+
+        // Mobile-friendly dropdown toggle
+        document.querySelectorAll('.dropdown-toggle').forEach(dropdown => {
+            dropdown.addEventListener('click', (e) => {
+                const dropdownMenu = dropdown.nextElementSibling;
+                const isVisible = dropdownMenu.style.display === 'block';
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+                if (dropdown.tagName !== 'A' || (dropdown.tagName === 'A' && e.target.closest('.dropdown-menu') === null)) {
+                    dropdownMenu.style.display = isVisible ? 'none' : 'block';
+                }
+                e.stopPropagation();
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
+        });
     </script>
 </body>
 </html>
