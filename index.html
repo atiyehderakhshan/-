@@ -202,7 +202,7 @@
             text-align: center;
         }
         .video-section video {
-            max-width: 70%;
+            max-width: 80%;
             margin: 0 auto;
             display: block;
             border-radius: 10px;
@@ -362,9 +362,8 @@
     <!-- بخش هیرو با اسلایدر -->
     <section class="hero-section">
         <div class="carousel">
-            <div class="carousel-item active" style="background-image: url('https://raw.githubusercontent.com/roghayeh-asn/atiye-derakhshan/main/photo_%DB%B2%DB%B0%DB%B2%DB%B5-%DB%B0%DB%B9-%DB%B1%DB%B1_%DB%B2%DB%B1-%DB%B3%DB%CDB4-%DB%B4%DB%B8.jpg');"></div>
-            <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1200x500?text=کتاب‌های+آموزشی')"></div>
-            <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1200x500?text=کلاس‌های+آتیه+درخشان')"></div>
+            <div class="carousel-item active" style="background-image: url('https://s6.uupload.ir/files/photo_۲۰۲۵-۰۹-۱۱_۲۱-۳۶-۴۸_2fzt.jpg');"></div>
+            <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1200x500?text=اسلاید+دوم')"></div>
             <div class="carousel-controls">
                 <button onclick="showPrevSlide()" class="prev" aria-label="اسلاید قبلی"><i class="fas fa-chevron-right"></i></button>
                 <button onclick="showNextSlide()" class="next" aria-label="اسلاید بعدی"><i class="fas fa-chevron-left"></i></button>
@@ -372,7 +371,6 @@
             <div class="carousel-indicators">
                 <span class="active" onclick="currentSlide(0)"></span>
                 <span onclick="currentSlide(1)"></span>
-                <span onclick="currentSlide(2)"></span>
             </div>
         </div>
         <div class="hero-content">
@@ -389,6 +387,32 @@
             آموزشگاه آتیه درخشان با هدف ارتقاء سطح علمی دانش‌آموزان و ارائه آموزش‌های باکیفیت تأسیس شده است. ما با تیمی حرفه‌ای، روش‌های نوین تدریس و امکانات پیشرفته، بهترین تجربه یادگیری را به شما ارائه می‌دهیم.
         </p>
         <a href="about-us.html" class="btn-primary">بیشتر بدانید</a>
+    </section>
+
+    <!-- بخش ویدئو (ثبت‌نام دوره‌های جدید) -->
+    <section class="video-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-blue-800 mb-8">ثبت‌نام دوره‌های جدید آغاز شد!</h2>
+            <video height="240" controls>
+                <source src="https://www.aparat.com/v/tfyj27b?refererRef=channel_page" type="video/mp4">
+                مرورگرت از ویدئو پشتیبانی نمی‌کنه. لطفاً از آپارات استفاده کن: <a href="https://www.aparat.com/v/tfyj27b?refererRef=channel_page">لینک آپارات</a>
+            </video>
+            <p class="mt-6 text-gray-600 max-w-2xl mx-auto">با پیوستن به دوره‌های جدید، از آموزش‌های تخصصی و به‌روز اساتید ما بهره‌مند شوید و گام بلندی به سوی موفقیت تحصیلی بردارید!</p>
+        </div>
+    </section>
+
+    <!-- بخش مدرسان -->
+    <section id="teachers" class="classroom-section">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-blue-800 mb-10"><i class="fas fa-chalkboard-teacher"></i> مدرسان ما</h2>
+            <div class="classroom-card bg-white shadow-lg p-8 mx-auto max-w-3xl">
+                <img src="https://s6.uupload.ir/files/photo_2025-09-27_18-49-48_07r.jpg" alt="مدرسان آتیه درخشان" class="w-full h-auto object-contain rounded-lg mb-4">
+                <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                    تیم ما شامل اساتید مجرب و با انگیزه است که با سال‌ها تجربه و روش‌های نوین، دانش‌آموزان را به سوی موفقیت هدایت می‌کنند.
+                </p>
+                <a href="instructors.html" class="btn-primary">معرفی اساتید</a>
+            </div>
+        </div>
     </section>
 
     <!-- بخش منابع آموزشی و ابزارها -->
@@ -410,31 +434,6 @@
                 <p>آزمون‌های آنلاین، کوییزهای تعاملی و نرم‌افزارهای آموزشی برای تمرین و ارزیابی پیشرفت تحصیلی شما.</p>
                 <a href="https://example.com/quiz" target="_blank">شروع آزمون</a>
             </div>
-        </div>
-    </section>
-
-    <!-- بخش مدرسان -->
-    <section id="teachers" class="classroom-section">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-extrabold text-blue-800 mb-10"><i class="fas fa-chalkboard-teacher"></i> مدرسان ما</h2>
-            <div class="classroom-card bg-white shadow-lg p-8 mx-auto max-w-3xl">
-                <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-                    تیم ما شامل اساتید مجرب و با انگیزه است که با سال‌ها تجربه و روش‌های نوین، دانش‌آموزان را به سوی موفقیت هدایت می‌کنند.
-                </p>
-                <a href="instructors.html" class="btn-primary">معرفی اساتید</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- بخش ویدئو -->
-    <section class="video-section">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-extrabold text-blue-800 mb-8">ثبت‌نام دوره‌های جدید آغاز شد!</h2>
-            <video height="160" controls>
-                <source src="https://static.cdn.asset.aparat.com/avt/66409867_15s.mp4" type="video/mp4">
-                مرورگرت از ویدئو پشتیبانی نمی‌کنه. لطفاً از یوتیوب استفاده کن: <a href="https://www.youtube.com/embed/SAMPLE_ID">لینک یوتیوب</a>
-            </video>
-            <p class="mt-6 text-gray-600 max-w-2xl mx-auto">لورم ایپسوم متن ساختگی با تولید سادگی و خوانایی، طراحی بخش‌های مختلف سایت با رویکرد حرفه‌ای.</p>
         </div>
     </section>
 
