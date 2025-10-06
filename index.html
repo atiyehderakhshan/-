@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -297,6 +298,18 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        .video-description {
+            background: linear-gradient(90deg, #f3f4f6, #e0f7fa);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+            color: #1e40af;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            margin-top: 1rem;
+        }
         @media (max-width: 768px) {
             .resource-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -312,6 +325,10 @@
             }
             .resource-card a {
                 font-size: 0.9rem;
+            }
+            .video-description {
+                font-size: 1rem;
+                padding: 0.75rem 1rem;
             }
         }
         @media (max-width: 480px) {
@@ -329,6 +346,10 @@
             }
             .resource-card a {
                 font-size: 0.85rem;
+            }
+            .video-description {
+                font-size: 0.9rem;
+                padding: 0.5rem 0.75rem;
             }
         }
     </style>
@@ -397,7 +418,9 @@
                 <source src="https://persian21.cdn.asset.aparat.com/aparat-video/ab75685d2a375a34a68f4fac0aa13d5666409867-360p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVlYjIxZWQ3ODU4ZTFlNzVmZjg2YTk4YTU3YWIzNjJkIiwiZXhwIjoxNzU5NzU3NjQ1LCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.VWsHZuIyfXMynDl0OV_QF7pVbxSlk3V4Bj1-Cp3OWPs" type="video/mp4">
                 مرورگرت از ویدئو پشتیبانی نمی‌کنه. لطفاً لینک زیر رو امتحان کن: <a href="https://persian21.cdn.asset.aparat.com/aparat-video/ab75685d2a375a34a68f4fac0aa13d5666409867-360p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImVlYjIxZWQ3ODU4ZTFlNzVmZjg2YTk4YTU3YWIzNjJkIiwiZXhwIjoxNzU5NzU3NjQ1LCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.VWsHZuIyfXMynDl0OV_QF7pVbxSlk3V4Bj1-Cp3OWPs">لینک ویدئو</a>
             </video>
-            <p class="mt-6 text-gray-600 max-w-2xl mx-auto">با پیوستن به دوره‌های جدید، از آموزش‌های تخصصی و به‌روز اساتید ما بهره‌مند شوید و گام بلندی به سوی موفقیت تحصیلی بردارید!</p>
+            <p class="video-description mt-6">
+                🌟 با پیوستن به دوره‌های جدید، از <span class="text-blue-600 font-bold">آموزش‌های تخصصی</span> و به‌روز اساتید ما بهره‌مند شوید و <span class="text-green-600 font-bold">گام بلندی</span> به سوی موفقیت تحصیلی بردارید! 🚀
+            </p>
         </div>
     </section>
 
